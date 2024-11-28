@@ -2,27 +2,57 @@
   "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.11/MicrosoftTeams.schema.json",
   "manifestVersion": "1.11",
   "version": "1.0.0",
-  "id": "unique-id-for-your-app",
-  "packageName": "com.arcelormittal.faq",
+  "id": "your-app-id",
+  "packageName": "com.yourcompany.yourapp",
+  "developer": {
+    "name": "Your Company",
+    "websiteUrl": "https://faqwebappunique123.azurewebsites.net",
+    "privacyUrl": "https://faqwebappunique123.azurewebsites.net/privacy",
+    "termsOfUseUrl": "https://faqwebappunique123.azurewebsites.net/terms"
+  },
   "name": {
-    "short": "FAQ Web",
-    "full": "ArcelorMittal FAQ Web"
+    "short": "FAQ Web App",
+    "full": "FAQ Web Application"
   },
   "description": {
-    "short": "FAQ web for ArcelorMittal",
-    "full": "This app provides FAQ information for employees of ArcelorMittal."
+    "short": "A FAQ web application for ArcelorMittal.",
+    "full": "This is a FAQ web application for ArcelorMittal, providing answers to common questions."
   },
   "icons": {
-    "outline": "outline-icon.png",
-    "color": "color-icon.png"
+    "color": "color.png",
+    "outline": "outline.png"
   },
   "accentColor": "#FFFFFF",
+  "configurableTabs": [
+    {
+      "configurationUrl": "https://faqwebappunique123.azurewebsites.net/config",
+      "canUpdateConfiguration": true,
+      "scopes": [
+        "team",
+        "groupchat"
+      ]
+    }
+  ],
   "staticTabs": [
     {
-      "entityId": "faq-web",
+      "entityId": "faqTab",
       "name": "FAQ",
-      "contentUrl": "http://localhost:3000>",
-      "websiteUrl": "http://localhost:3000>"
+      "contentUrl": "https://faqwebappunique123.azurewebsites.net",
+      "websiteUrl": "https://faqwebappunique123.azurewebsites.net",
+      "scopes": [
+        "personal"
+      ]
     }
-  ]
+  ],
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": [
+    "faqwebappunique123.azurewebsites.net"
+  ],
+  "webApplicationInfo": {
+    "id": "your-app-id",
+    "resource": "https://faqwebappunique123.azurewebsites.net"
+  }
 }
