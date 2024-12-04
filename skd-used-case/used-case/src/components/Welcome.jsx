@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { Image, Button } from "@fluentui/react-components";
+import { Button } from "@fluentui/react-components";
 import { useData } from "@microsoft/teamsfx-react";
 import { TeamsFxContext } from "./Context";
-import { app } from "@microsoft/teams-js";
+//import { app } from "@microsoft/teams-js";
 import "./Welcome.css";
 
 const Welcome = ({ teamsUserCredential }) => {
@@ -13,26 +13,40 @@ const Welcome = ({ teamsUserCredential }) => {
     }
   });
 
-  const environment = window.location.hostname === "localhost" ? "local" : "azure";
-  const friendlyEnvironmentName = {
+  //const environment = window.location.hostname === "localhost" ? "local" : "azure";
+  /*const friendlyEnvironmentName = {
     local: "local environment",
     azure: "Azure environment",
-  }[environment] || "local environment";
+  }[environment] || "local environment";*/
 
-  const userName = loading || error ? "" : data.displayName;
-  const hubName = useData(async () => {
+  //const userName = loading || error ? "" : data.displayName;
+  /*const hubName = useData(async () => {
     await app.initialize();
     const context = await app.getContext();
     return context.app.host.name;
-  })?.data;
-
+  })?.data;*/
+  
   return (
     <div className="welcome page">
       <div className="narrow page-padding">
-        <Image src="logoGlory1891.jpg" />
-        <h1 className="center">Congratulations{userName ? ", " + userName : ""}!</h1>
-        <p className="center">Your app is running in your {friendlyEnvironmentName}</p>
-        {hubName && <p className="center">Your app is running in {hubName}</p>}
+        <section class="welcome-section">
+          <h1>Welcome to Our Help Center</h1>
+          <p>
+            Have a question or need assistance? You’re in the right place! This FAQ page is designed to provide quick and helpful answers to the most common questions across a variety of topics, from IT troubleshooting to HR policies.
+          </p>
+          <h2>Here’s how we can help:</h2>
+          <ul>
+            <li><strong>Search for Answers:</strong> Browse through our curated list of FAQs to find solutions to common problems.</li>
+            <li><strong>Ask a Question:</strong> Can’t find what you’re looking for? Submit your question, and our team will assist you.</li>
+            <li><strong>Stay Informed:</strong> Access guides, tips, and updates to make navigating challenges easier.</li>
+          </ul>
+          <p>
+            Whether you’re facing technical issues or looking for guidance on workplace policies, our FAQ hub is here to help you find the answers you need quickly and efficiently.
+          </p>
+          <p>
+            <em>Start exploring now or use the search bar to find specific topics!</em>
+          </p>
+        </section>
       </div>
     </div>
   );
