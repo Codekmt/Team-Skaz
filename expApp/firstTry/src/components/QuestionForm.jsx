@@ -13,15 +13,15 @@ const QuestionForm = ({ onQuestionAdded }) => {
     };
   
     return (
-      <div>
+      <div className="question-card">
         <input
           type="text"
-          placeholder="Title"
+          placeholder="Question"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
-          placeholder="Description"
+          placeholder="Tags"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />

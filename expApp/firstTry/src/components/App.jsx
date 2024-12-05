@@ -3,6 +3,7 @@ import axios from "axios";
 import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 import QuestionDetail from "./QuestionDetail";
+import "./App.css";
 
 const App = () => {
   const [questions, setQuestions] = useState([]);
