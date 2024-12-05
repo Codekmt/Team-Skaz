@@ -2,7 +2,7 @@ import React from "react";
 const AnswerList = ({ answers }) => (
     <ul>
       {answers.map((a) => (
-        <li key={a.id}>{a.text} <input type="checkbox" /></li>
+        <li className="answersList" key={a.id}>{a.answer}  <input type="checkbox" /></li>
       ))}
     </ul>
   );

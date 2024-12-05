@@ -16,10 +16,10 @@ const QuestionDetail = ({ question }) => {
   
     return (
       <div>
-        <h2>{question.title}</h2>
-        <p>{question.description}</p>
-        <AnswerForm questionId={question.id} onAnswerAdded={fetchAnswers} />
+        <h2 className="questionTitle">{question.title}</h2>
+        <p className="questionTime"> {question.date}</p>
         <AnswerList answers={answers} />
+        <AnswerForm questionId={question.id} onAnswerAdded={fetchAnswers} />
       </div>
     );
   };

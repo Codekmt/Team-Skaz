@@ -2,47 +2,63 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000000;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     text-align: center;
   }
   
   h1 {
     text-align: center;
-    color: #007bff;
-    margin-top: 20px;
   }
   
   .forum {
-    max-width: 1200px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #000000;
-    color: white;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
     border-radius: 8px;
     box-shadow: 0 4px 6px rgb(255, 0, 0);
   }
   
   .content {
     display: grid;
+    border: #f8f9fa solid 1px;
     gap: 20px;
     margin-top: 20px;
   }
 
+  .answersList {
+    list-style: none;
+    background-color: rgb(249, 249, 249);
+    margin-top: 2px;
+  }
+
+  .questionsList {
+    margin-top: 4px;
+    list-style: none;
+    border-radius: 5%;
+    background-color: rgb(249, 249, 249);
+  }
 
   .question-card {
     padding: 15px;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
-    background-color: #f8f9fa;
     display: grid;
     width: 50%;
     margin-left: 25%;
+    background-color: rgb(255, 255, 255);
   }
-  
-  /* Responsive layout */
+
+  .questionsList:hover {
+    cursor: pointer;
+    color: #59b8cd;
+  }
+
+
   @media (max-width: 768px) {
     .content {
       flex-direction: column;

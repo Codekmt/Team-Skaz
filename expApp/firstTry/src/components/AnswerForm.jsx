@@ -2,11 +2,11 @@ import {React, useState} from "react";
 import axios from "axios";
 
 const AnswerForm = ({ questionId, onAnswerAdded }) => {
-    const [text, setText] = useState("");
+    const [answer, setAnswer] = useState("");
   
     const handleSubmit = async () => {
-      await axios.post("http://localhost:5000/api/answers", { questionId, text });
-      setText("");
+      await axios.post("http://localhost:5000/api/answers", { questionId, answer });
+      setAnswer("");
       onAnswerAdded();
     };
 
@@ -14,10 +14,11 @@ const AnswerForm = ({ questionId, onAnswerAdded }) => {
       <div>
         <textarea
           placeholder="Your answer"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
         />
-        <button onClick={handleSubmit}>Post Answer</button>
+        <br></br>
+        <button className="button" onClick={handleSubmit}>Post Answer</button>
       </div>
     );
 };

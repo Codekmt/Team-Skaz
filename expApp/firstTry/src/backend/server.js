@@ -37,6 +37,17 @@ const writeFile = (filePath, data) =>
 if (!fs.existsSync(questionsFilePath)) fs.writeFileSync(questionsFilePath, "[]");
 if (!fs.existsSync(answersFilePath)) fs.writeFileSync(answersFilePath, "{}");
 
+const formatDate = (isoString) => {
+  const date = new Date(isoString);
+  const options = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+  return date.toLocaleString("en-GB", options);
+};
 
 app.get("/api/questions", async (req, res) => {
   try {
@@ -48,10 +59,10 @@ app.get("/api/questions", async (req, res) => {
 });
 
 app.post("/api/questions", async (req, res) => {
-  const { title, description } = req.body;
+  const { title, tags } = req.body;
 
-  if (!title || !description) {
-    return res.status(400).json({ error: "Title and description are required" });
+  if (!title || !tags) {
+    return res.status(400).json({ error: "Title and tags are required" });
   }
 
   try {
@@ -59,8 +70,8 @@ app.post("/api/questions", async (req, res) => {
     const newQuestion = {
       id: Date.now().toString(),
       title,
-      description,
-      date: new Date().toISOString(),
+      tags,
+      date: formatDate(new Date().toISOString()),
     };
 
     questions.push(newQuestion);
@@ -84,10 +95,10 @@ app.get("/api/answers/:questionId", async (req, res) => {
 });
 
 app.post("/api/answers", async (req, res) => {
-  const { questionId, text } = req.body;
+  const { questionId, answer } = req.body;
 
-  if (!questionId || !text) {
-    return res.status(400).json({ error: "Question ID and text are required" });
+  if (!questionId || !answer) {
+    return res.status(400).json({ error: "Question ID and answer are required" });
   }
 
   try {
@@ -99,8 +110,8 @@ app.post("/api/answers", async (req, res) => {
 
     const newAnswer = {
       id: Date.now().toString(),
-      text,
-      date: new Date().toISOString(),
+      answer,
+      date: formatDate(new Date().toISOString()),
     };
 
     answers[questionId].push(newAnswer);

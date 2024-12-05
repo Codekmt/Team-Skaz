@@ -3,12 +3,14 @@ import axios from "axios";
 
 const QuestionForm = ({ onQuestionAdded }) => {
     const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
+    const [tags, setTags] = useState("");
   
     const handleSubmit = async () => {
-      await axios.post("http://localhost:5000/api/questions", { title, description });
+      await axios.post("http://localhost:5000/api/questions", { 
+        title, 
+        tags: tags.split(",").map(tag => tag.trim()), });
       setTitle("");
-      setDescription("");
+      setTags("");
       onQuestionAdded();
     };
   
@@ -22,10 +24,10 @@ const QuestionForm = ({ onQuestionAdded }) => {
         />
         <textarea
           placeholder="Tags"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={tags}
+          onChange={(e) => setTags(e.target.value)}
         />
-        <button onClick={handleSubmit}>Post Question</button>
+        <button className="button" onClick={handleSubmit}>Post Question</button>
       </div>
     );
   };

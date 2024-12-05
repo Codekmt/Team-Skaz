@@ -23,8 +23,8 @@ const App = () => {
       <h1>Simple Forum</h1>
       <QuestionForm onQuestionAdded={fetchQuestions} />
       <div className="content">
-        <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
         {selectedQuestion && <QuestionDetail question={selectedQuestion} />}
+        <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
       </div>
     </div>
   );
