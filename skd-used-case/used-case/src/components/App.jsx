@@ -41,8 +41,7 @@ export default function App() {
           {loading ? (
             <Spinner style={{ margin: 100 }} />
           ) : (
-            <Routes>            
-              
+            <Routes>          
               <Route path="/tab" element={<Tab />} />
               <Route path="*" element={<Navigate to={"/tab"} />}></Route>
             </Routes>
