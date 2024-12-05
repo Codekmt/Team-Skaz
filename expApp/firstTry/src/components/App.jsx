@@ -1,19 +1,33 @@
-// https://fluentsite.z22.web.core.windows.net/quick-start
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import QuestionForm from "./QuestionForm";
+import QuestionList from "./QuestionList";
+import QuestionDetail from "./QuestionDetail";
 
-/**
- * The main app which handles the initialization and routing
- * of the app.
- */
-export default function App() {
- return (
-  <>
-  <header></header>
-  <div className="inputField" style={{backgroundColor: 'black', width: '100%', height: "300px"}}>
-  <h1 style={{color: 'white'}}><u>Welcome to the message filtering system</u></h1>
-  <p style={{color: 'white'}}>What are you looking</p>
-  <input type="text" placeholder="Type something here" /><button>Submit</button>
-  </div>
-  <footer></footer>
-  </>
- )
-}
+const App = () => {
+  const [questions, setQuestions] = useState([]);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
+
+  const fetchQuestions = async () => {
+    const response = await axios.get("http://localhost:5000/api/questions");
+    setQuestions(response.data);
+  };
+
+  useEffect(() => {
+    fetchQuestions();
+  }, []);
+
+  return (
+    <div className="forum">
+      <h1>Simple Forum</h1>
+      <QuestionForm onQuestionAdded={fetchQuestions} />
+      <div className="content">
+        <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
+        {selectedQuestion && <QuestionDetail question={selectedQuestion} />}
+      </div>
+    </div>
+  );
+};
+
+
+export default App;
