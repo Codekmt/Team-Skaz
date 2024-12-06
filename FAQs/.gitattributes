@@ -1,0 +1,4 @@
+path/to/your/largefile filter=lfs diff=lfs merge=lfs -text
+largefile.ext filter=lfs diff=lfs merge=lfs -text
+src/components/sample/FAQs.jsx filter=lfs diff=lfs merge=lfs -text
+src/components/sample/FAQs.zip filter=lfs diff=lfs merge=lfs -text
