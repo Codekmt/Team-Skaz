@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { Button } from "@fluentui/react-components";
-import { useData } from "@microsoft/teamsfx-react";
+//import { useData } from "@microsoft/teamsfx-react";
 import { TeamsFxContext } from "./Context";
 //import { app } from "@microsoft/teams-js";
 import "./Welcome.css";
 
 const Welcome = ({ teamsUserCredential }) => {
-  const { loading, data, error } = useData(async () => {
+  /*const { loading, data, error } = useData(async () => {
     if (teamsUserCredential) {
       const userInfo = await teamsUserCredential.getUserInfo();
       return userInfo;
