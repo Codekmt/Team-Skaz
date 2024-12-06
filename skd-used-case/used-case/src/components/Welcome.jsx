@@ -72,8 +72,8 @@ const TeamsApp = () => {
 
   const renderContent = () => {
     switch(currentTab) {
-      case 'welcome':
-        return <Welcome teamsUserCredential={teamsUserCredential} />;
+      //case 'welcome':
+        //return <Welcome teamsUserCredential={teamsUserCredential} />;
       case 'faq':
         return <FAQ />;
       case 'support':
