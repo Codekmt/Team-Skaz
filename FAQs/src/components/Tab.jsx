@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Welcome } from "./sample/Welcome";
+import Welcome from "./sample/Welcome";
 import { TeamsFxContext } from "./Context";
 import config from "./sample/lib/config";
 
