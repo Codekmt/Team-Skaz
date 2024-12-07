@@ -1,27 +1,29 @@
-import {React, useState, useCallback, useEffect} from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import AnswerForm from "./AnswerForm";
 import AnswerList from "./AnswerList";
 
 const QuestionDetail = ({ question }) => {
-    const [answers, setAnswers] = useState([]);
-  
-    const fetchAnswers = useCallback(async () => {
-      const response = await axios.get(`http://localhost:5000/api/answers/${question.id}`);
-      setAnswers(response.data);
-    }, [question.id]); 
-    useEffect(() => {
-      fetchAnswers();
-    }, [fetchAnswers]); 
-  
-    return (
-      <div>
-        <h2 className="questionTitle">{question.title}</h2>
-        <p className="questionTime"> {question.date}</p>
-        <AnswerList answers={answers} />
-        <AnswerForm questionId={question.id} onAnswerAdded={fetchAnswers} />
-      </div>
-    );
-  };
+  const [answers, setAnswers] = useState([]);
+
+  const fetchAnswers = useCallback(async () => {
+    const response = await axios.get(`http://localhost:5000/api/solutions/${question.question_id}`);
+    setAnswers(response.data);
+  }, [question.question_id]);
+
+  useEffect(() => {
+    fetchAnswers();
+  }, [fetchAnswers]);  
+
+  return (
+    <div className="question-detail">
+      <h2>{question.body}</h2>
+      <p>Posted on: {question.created_at}</p>
+      <p>Tags: {question.tags.join(", ")}</p>
+      <AnswerForm questionId={question.question_id} onAnswerAdded={fetchAnswers} />
+      <AnswerList answers={answers} />
+    </div>
+  );
+};
 
 export default QuestionDetail;
