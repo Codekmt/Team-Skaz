@@ -1,14 +1,19 @@
 import React from "react";
-
-const AnswerList = ({ answers }) => (
-  <div className="answer-list">
-    <h3>Answers:</h3>
+const AnswerList = ({ answers, correctAnswerID, onCorrectAnswer }) => (
     <ul>
       {answers.map((a) => (
-        <li key={a.solution_id}>{a.body}</li>
+        <li  className={`answersList ${correctAnswerID === a.id ? "correct" : ""}`} 
+            key={a.id}>
+          {a.answer}  
+            <input 
+            type="radio"  
+            checked={correctAnswerID === a.id}
+            onChange={() => onCorrectAnswer(a.id)}
+            />
+          <hr />
+        </li>
+        
       ))}
     </ul>
-  </div>
-);
-
+  );
 export default AnswerList;

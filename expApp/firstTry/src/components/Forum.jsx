@@ -3,9 +3,9 @@ import axios from "axios";
 import QuestionForm from "./QuestionForm";
 import QuestionList from "./QuestionList";
 import QuestionDetail from "./QuestionDetail";
-import "./App.css";
+import "./Forum.css";
 
-const App = () => {
+const Forum = () => {
   const [questions, setQuestions] = useState([]);
   const [selectedQuestion, setSelectedQuestion] = useState(null);
 
@@ -19,15 +19,22 @@ const App = () => {
   }, []);
 
   return (
+    <>
     <div className="forum">
-      <h1>Simple Forum</h1>
-      <QuestionForm onQuestionAdded={fetchQuestions} />
-      <div className="content">
-        {selectedQuestion && <QuestionDetail question={selectedQuestion} />}
-        <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
-      </div>
+    <header>
+      <h1>Forum</h1>
+    </header>
+      <main>
+        <QuestionForm onQuestionAdded={fetchQuestions} />
+          <div className="content">
+              {selectedQuestion && <QuestionDetail question={selectedQuestion} />}
+                  <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
+          </div>
+      </main>
     </div>
+    </>
   );
 };
 
-export default App;
+
+export default Forum;
