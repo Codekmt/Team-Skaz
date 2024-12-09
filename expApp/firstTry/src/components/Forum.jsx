@@ -21,16 +21,16 @@ const Forum = () => {
   return (
     <>
     <div className="forum">
-    <header>
-      <h1>Forum</h1>
-    </header>
-      <main>
-        <QuestionForm onQuestionAdded={fetchQuestions} />
-          <div className="content">
+      <header>
+        <h1>Forum</h1>
+      </header>
+        <main>
+          <QuestionForm onQuestionAdded={fetchQuestions} />
+            <div className="content">
               {selectedQuestion && <QuestionDetail question={selectedQuestion} />}
                   <QuestionList questions={questions} onSelectQuestion={setSelectedQuestion} />
-          </div>
-      </main>
+            </div>
+        </main>
     </div>
     </>
   );
