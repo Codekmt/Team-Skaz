@@ -7,8 +7,10 @@ const QuestionForm = ({ onQuestionAdded }) => {
   
     const handleSubmit = async () => {
       await axios.post("http://localhost:5000/api/questions", { 
-        title, 
-        tags: tags.split(",").map(tag => tag.trim()), });
+        title : title, 
+        tags : tags.split(",").map(tag => tag.trim()),
+      });
+
       setTitle("");
       setTags("");
       onQuestionAdded();

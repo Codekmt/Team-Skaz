@@ -3,7 +3,7 @@ const AnswerList = ({ answers, correctAnswerID, onCorrectAnswer }) => (
     <ul>
       {answers.map((a) => (
         <li  className={`answersList ${correctAnswerID === a.id ? "correct" : ""}`} 
-            key={a.id}>
+          key={a.id}>
           {a.answer}  
             <input 
             type="radio"  

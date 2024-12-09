@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 
 const questionsFilePath = path.join(__dirname, "questions.json");
 const answersFilePath = path.join(__dirname, "answers.json");
+const tagsFilePath = path.join(__dirname, "tags.json");
+const postTagsFilePath = path.join(__dirname, "postTags.json");
 
 const readFile = (filePath) =>
   new Promise((resolve, reject) => {
@@ -36,6 +38,8 @@ const writeFile = (filePath, data) =>
 
 if (!fs.existsSync(questionsFilePath)) fs.writeFileSync(questionsFilePath, "[]");
 if (!fs.existsSync(answersFilePath)) fs.writeFileSync(answersFilePath, "{}");
+if (!fs.existsSync(tagsFilePath)) fs.writeFileSync(tagsFilePath, "{}");
+if (!fs.existsSync(postTagsFilePath)) fs.writeFileSync(postTagsFilePath, "{}");
 
 const formatDate = (isoString) => {
   const date = new Date(isoString);
@@ -69,10 +73,9 @@ app.post("/api/questions", async (req, res) => {
     const questions = await readFile(questionsFilePath);
     const newQuestion = {
       id: Date.now().toString(),
-      title,
-      tags,
+      title: title,
+      tags : tags,
       date: formatDate(new Date().toISOString()),
-      correctAnswerID: null,
     };
 
     questions.push(newQuestion);
@@ -124,21 +127,67 @@ app.post("/api/answers", async (req, res) => {
   }
 });
 
-app.post("/api/save-question-to-db", async (req, res) => {
-  const { question } = req.body;
+// app.post("/api/tags", async (req, res) => {
+//   const { tag } = req.body;
 
-  if (!question || !question.id || !question.title) {
-    return res.status(400).json({ error: "Incomplete question data" });
-  }
+//   if (!tag) {
+//     return res.status(400).json({ error: "Tag is required" });
+//   }
+//   try {
+//   const tags = await readFile(tagsFilePath);
+//   if (!tags[tag]) {
+//     tags[tag] = [];
+//   } 
+//   const newTag = {
+//     tagId: Math.floor(Math.random() * 100),
+//     tag,
+//     questionId: req.body.questions.questionId
+//   };
+//   tags[tag].push(newTag);
+//   await writeFile(tagsFilePath, tags);
+//   res.status(201).json(newTag);
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to save the tag" });
+//   }
+// });
 
-  try {
-    console.log("Saving question to database:", question);
-    res.status(200).json({ message: "Question saved successfully" });
-  } catch (error) {
-    console.error("Failed to save question:", error);
-    res.status(500).json({ error: "Failed to save question to the database" });
-  }
-});
+// app.get("/api/tags/:tag", async (req, res) => { 
+//   const tag = req.params.tag;
+//   try {
+//     const tags = await readFile(tagsFilePath);
+//     res.json(tags[tag] || []);
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to read answers file" });
+//   }
+
+// })
+
+// app.post("/api/postTags", async (req, res) => {
+//   const { questionId, tag } = req.body;
+
+//   if (!questionId || !tag) {
+//     return res.status(400).json({ error: "Question ID and tag are required" });
+//   }
+
+//   try {
+//     const postTags = await readFile(postTagsFilePath);
+//     if (!postTags[questionId]) {
+//       postTags[questionId] = [];
+//     }
+
+//     const postTag = {
+//       tagId: req.tags.tagId,
+//       questionId: req.questions.questionId,
+//       tag,
+//     }
+//     postTags[tag].push(postTag);
+//     await writeFile(postTagsFilePath, postTags);
+
+//     res.status(201).json(postTags[questionId]);
+//   } catch (err) {
+//     res.status(500).json({ error: "Failed to save the post tag" });
+//   }
+// });
 
 
 const PORT = 5000;
