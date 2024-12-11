@@ -169,59 +169,5 @@
       "monthly"
     ],
     "date": "07/12/2024, 18:16"
-  },
-  {
-    "id": "1733593794968",
-    "title": "How many questions were asked already?",
-    "tags": [
-      "quantity"
-    ],
-    "date": "07/12/2024, 18:49"
-  },
-  {
-    "id": "1733668768784",
-    "title": "How are there so many questions?",
-    "tags": [
-      "quantity"
-    ],
-    "date": "08/12/2024, 15:39"
-  },
-  {
-    "id": "1733749409209",
-    "title": "Another random question?",
-    "tags": [
-      "random",
-      "question"
-    ],
-    "date": "09/12/2024, 14:03",
-    "correctAnswerID": null
-  },
-  {
-    "id": "1733751545020",
-    "title": "One more random question?",
-    "tags": [
-      "random",
-      "question"
-    ],
-    "date": "09/12/2024, 14:39",
-    "correctAnswerID": null
-  },
-  {
-    "id": "1733758099236",
-    "title": "Where are great waves at the moment?",
-    "tags": [
-      "surflife",
-      "chill"
-    ],
-    "date": "09/12/2024, 16:28"
-  },
-  {
-    "id": "1733923568614",
-    "title": "Ont more test question?",
-    "tags": [
-      "question",
-      "test"
-    ],
-    "date": "11/12/2024, 14:26"
   }
 ]

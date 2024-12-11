@@ -63,7 +63,7 @@ h1 {
 
 .questionsList:hover {
   cursor: pointer;
-  color: #00fbff;
+  color: #006eff;
 }
 
 input[type="text"], textarea {
@@ -117,19 +117,12 @@ input[type="text"], textarea {
 }
 
 .answersList.correct {
-  border-color: #4caf50; 
+  border-color: #0078d4; 
   background-color: #e8f5e9; 
   font-weight: bold; 
-  color: #2e7d32; 
+  color: #0078d4; 
 }
 
-.answersList:hover {
-  background-color: #f1f1f1;
-}
-
-.answersList.correct:hover {
-  background-color: #dcedc8; 
-}
 
 
 

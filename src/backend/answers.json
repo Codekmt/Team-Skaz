@@ -4,13 +4,13 @@
       "id": "1701229200000",
       "answer": "ArcelorMittal has implemented strict safety protocols, including regular training sessions and personal protective equipment for all workers.",
       "date": "2024-06-30T11:00:00.000Z",
-      "correctAnswer": true
+      "correctAnswer": false
     },
     {
       "id": "1701232800000",
       "answer": "Emergency drills and hazard assessments are conducted frequently to ensure a safe working environment.",
       "date": "2024-06-30T12:00:00.000Z",
-      "correctAnswer": false
+      "correctAnswer": true
     }
   ],
   "1700457600000": [
@@ -143,44 +143,6 @@
       "answer": "Strategic partnerships and acquisitions strengthen its market position.",
       "date": "2024-08-01T11:00:00.000Z",
       "correctAnswer": true
-    }
-  ],
-  "1733668768784": [
-    {
-      "id": "1733668780165",
-      "answer": "Because I asked them",
-      "date": "08/12/2024, 15:39",
-      "correctAnswer": true
-    },
-    {
-      "id": "1733673690495",
-      "answer": "New answer",
-      "date": "08/12/2024, 17:01",
-      "correctAnswer": true
-    }
-  ],
-  "1733751545020": [
-    {
-      "id": "1733751568128",
-      "answer": "Really, one more?",
-      "date": "09/12/2024, 14:39",
-      "correctAnswer": true
-    }
-  ],
-  "1733758099236": [
-    {
-      "id": "1733758127186",
-      "answer": "Morocco.",
-      "date": "09/12/2024, 16:28",
-      "correctAnswer": true
-    }
-  ],
-  "1733923568614": [
-    {
-      "id": "1733923576453",
-      "answer": "Test answer",
-      "date": "11/12/2024, 14:26",
-      "correctAnswer": false
     }
   ]
 }
