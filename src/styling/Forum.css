@@ -1,8 +1,6 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color:#0078d4;
@@ -11,6 +9,7 @@ body {
 h1 {
   text-align: center;
   font-weight: 1200;
+  color: black;
 }
 
 .forum {
@@ -74,6 +73,7 @@ input[type="text"], textarea {
   border: 2px solid #0078d4;
   border-radius: 10px;
   resize: none;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .button {
@@ -118,13 +118,67 @@ input[type="text"], textarea {
 
 .answersList.correct {
   border-color: #0078d4; 
-  background-color: #e8f5e9; 
   font-weight: bold; 
   color: #0078d4; 
 }
 
+.answerId {
+  opacity: 0.3;
+}
 
+.filter-container {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 50%;
+}
 
+.tag-search-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.tag-dropdown {
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+.tag-option {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.tag-option:hover {
+  background: #f0f0f0;
+}
+
+.selected-tag {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.selected-tag span {
+  margin-right: 0.5rem;
+}
+
+.selected-tag button {
+  background: #d9534f;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
   .content {

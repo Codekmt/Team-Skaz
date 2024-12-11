@@ -3,9 +3,9 @@ import "../styling/FAQs.css";
 import questions from "../backend/questions"; 
 import answers from "../backend/answers"; 
 
-export function FAQs() {
+export function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const [visibleCount, setVisibleCount] = useState(5); // Start by showing 5 items
+  const [visibleCount, setVisibleCount] = useState(5);
 
   const faqs = questions.map((question) => {
     const questionAnswers = answers[question.id]; 
@@ -17,15 +17,15 @@ export function FAQs() {
           answer: correctAnswer.answer,
         }
       : null;
-  }).filter((faq) => faq !== null); // Filter out null values
+  }).filter((faq) => faq !== null); 
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  // Handle "Show More" button click
+ 
   const showMore = () => {
-    setVisibleCount(visibleCount + 5); // Show 5 more items
+    setVisibleCount(visibleCount + 5); 
   };
 
   return (
