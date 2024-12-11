@@ -22,7 +22,6 @@ const QuestionDetail = ({ question }) => {
 
   const updateCorrectAnswer = async (selectedID) => {
     try {
-      // Find and update the answer with the selectedID
       const updatedAnswers = answers.map((answer) => ({
         ...answer,
         correctAnswer: answer.id === selectedID,
@@ -32,7 +31,7 @@ const QuestionDetail = ({ question }) => {
         updatedAnswers
       );
       setAnswers(updatedAnswers);
-      setCorrectAnswerID(selectedID); // Update the correct answer ID
+      setCorrectAnswerID(selectedID);
     } catch (error) {
       console.error("Failed to update correct answer:", error);
       alert("Failed to update the correct answer.");
