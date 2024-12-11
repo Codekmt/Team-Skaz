@@ -1,0 +1,124 @@
+Database info : 
+===============
+
+Postgresql Database :
+----------------------
+
+Tables : 
+-------
+1. posts
+    CREATE TABLE posts (
+        uid varchar,
+        content text not null,
+        post_id SERIAL PRIMARY KEY,
+        time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        is_locked boolean default false
+    );
+2. Tags
+    CREATE TABLE tags (
+        tag_id SERIAL PRIMARY KEY,
+        slug varchar, 
+        name TEXT NOT NULL UNIQUE
+    );
+
+3. post_tags (Links tags to posts)
+CREATE TABLE question_tags (
+    post_id INTEGER,
+    tag_id INTEGER,
+    FOREIGN KEY (post_id) REFERENCES posts(post_id),
+    FOREIGN KEY (tag_id) REFERENCES tags(tag_id),
+    PRIMARY KEY (post_id, tag_id)  -- Composite primary key
+);
+
+
+4.Comments
+    CREATE TABLE Comments (
+        comment_id SERIAL PRIMARY KEY,
+        post_id INTEGER NOT NULL,
+        is_answer TEXT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY (post_id) REFERENCES posts(post_id) ON DELETE CASCADE
+    );
+
+EVERYTHING TO LOWERCASE
+Dropdown menu for Tags (has to read tags from the database)
+
+Notes:
+- Install Supabase
+    npm install @supabase/supabase-js
+
+Create Function (to lower case):
+================================
+
+CREATE OR REPLACE FUNCTION lowercase_trigger()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_TABLE_NAME = 'posts' THEN
+        NEW.body = LOWER(NEW.body);
+    ELSIF TG_TABLE_NAME = 'tags' THEN
+        NEW.name = LOWER(NEW.name);
+    ELSIF TG_TABLE_NAME = 'comments' THEN
+        NEW.body = LOWER(NEW.body);
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+Triggers:
+=========
+CREATE TRIGGER lowercase_posts
+BEFORE INSERT OR UPDATE ON posts
+FOR EACH ROW
+EXECUTE FUNCTION lowercase_trigger();
+
+CREATE TRIGGER lowercase_tags
+BEFORE INSERT OR UPDATE ON tags
+FOR EACH ROW
+EXECUTE FUNCTION lowercase_trigger();
+
+CREATE TRIGGER lowercase_comments
+BEFORE INSERT OR UPDATE ON comments
+FOR EACH ROW
+EXECUTE FUNCTION lowercase_trigger();
+
+For each row is ok, since the other data are serials or timestamps!
+
+Insert testtags:
+================
+INSERT INTO tags (name) VALUES (testdata);
+('Steel'),
+('Hot Rolled'),
+('Cold Rolled'),
+('Automotive'),
+('Construction'),
+('Green Steel'),
+('Blast Furnace'),
+('Electric Arc Furnace'),
+('Europe'),
+('Asia'),
+('Recycling'),
+('Quality Control'),
+('Innovation'),
+('Sustainability'),
+('Automated Manufacturing'),
+('Carbon Neutral'),
+('Energy Efficiency'),
+('Heavy Industry'),
+('Supply Chain'),
+('Global Operations');
+
+search by tag:
+--------------
+BEGIN
+    RETURN QUERY
+    SELECT p.post_id, p.content, s.solution_id, s.body
+    FROM posts p
+    LEFT JOIN solutions s ON p.post_id = p.post_id
+    JOIN question_tags qt ON q.question_id = qt.question_id
+    JOIN tags t ON qt.tag_id = t.tag_id
+    WHERE t.name ILIKE '%' || tag_name || '%'  
+    AND (
+        (start_date IS NULL AND end_date IS NULL) 
+        OR (q.created_at >= start_date AND (end_date IS NULL OR q.created_at <= end_date))  
+    );
+END;
