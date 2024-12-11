@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import QuestionForm from "./QuestionForm";
-import QuestionList from "./QuestionList";
-import QuestionDetail from "./QuestionDetail";
-import "./Forum.css";
+import QuestionForm from "../components/QuestionForm";
+import QuestionList from "../components/QuestionList";
+import QuestionDetail from "../components/QuestionDetail";
+import "../Forum.css";
 
 const Forum = () => {
   const [questions, setQuestions] = useState([]);
