@@ -14,12 +14,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "UCAM${{APP_NAME_SUFFIX}}",
-        "full": "Full name for UCAM"
+        "short": "firstTry${{APP_NAME_SUFFIX}}",
+        "full": "Full name for firstTry"
     },
     "description": {
-        "short": "Short description of UCAM",
-        "full": "Full description of UCAM"
+        "short": "Short description of firstTry",
+        "full": "Full description of firstTry"
     },
     "accentColor": "#FFFFFF",
     "bots": [],
