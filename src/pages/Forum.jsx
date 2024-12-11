@@ -3,7 +3,7 @@ import axios from "axios";
 import QuestionForm from "../components/QuestionForm";
 import QuestionList from "../components/QuestionList";
 import QuestionDetail from "../components/QuestionDetail";
-import "../Forum.css";
+import "../styling/Forum.css";
 
 const Forum = () => {
   const [questions, setQuestions] = useState([]);
