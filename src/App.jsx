@@ -17,12 +17,13 @@
             <Link to="/" className="navLinks">
               Home
             </Link>
-            <Link to="/FAQs" className="navLinks">
-              FAQs
-            </Link>
             <Link to="/Forum" className="navLinks">
               Forum
             </Link>
+            <Link to="/FAQs" className="navLinks">
+              FAQs
+            </Link>
+            
           </nav>
           <Routes>
             <Route path="/" element={<HomePage />} />

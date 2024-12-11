@@ -116,6 +116,7 @@ app.post("/api/answers", async (req, res) => {
       id: Date.now().toString(),
       answer,
       date: formatDate(new Date().toISOString()),
+      correctAnswer: false,
     };
 
     answers[questionId].push(newAnswer);
@@ -127,67 +128,26 @@ app.post("/api/answers", async (req, res) => {
   }
 });
 
-// app.post("/api/tags", async (req, res) => {
-//   const { tag } = req.body;
+app.patch('/api/answers/:questionId', async (req, res) => {
+  const { questionId } = req.params;
+  const updatedAnswers = req.body;
 
-//   if (!tag) {
-//     return res.status(400).json({ error: "Tag is required" });
-//   }
-//   try {
-//   const tags = await readFile(tagsFilePath);
-//   if (!tags[tag]) {
-//     tags[tag] = [];
-//   } 
-//   const newTag = {
-//     tagId: Math.floor(Math.random() * 100),
-//     tag,
-//     questionId: req.body.questions.questionId
-//   };
-//   tags[tag].push(newTag);
-//   await writeFile(tagsFilePath, tags);
-//   res.status(201).json(newTag);
-//   } catch (err) {
-//     res.status(500).json({ error: "Failed to save the tag" });
-//   }
-// });
+  try {
+    const answers = await readFile(answersFilePath);
 
-// app.get("/api/tags/:tag", async (req, res) => { 
-//   const tag = req.params.tag;
-//   try {
-//     const tags = await readFile(tagsFilePath);
-//     res.json(tags[tag] || []);
-//   } catch (err) {
-//     res.status(500).json({ error: "Failed to read answers file" });
-//   }
+    if (!answers[questionId]) {
+      return res.status(404).json({ message: "Question not found" });
+    }
 
-// })
+    answers[questionId] = updatedAnswers;
+    await writeFile(answersFilePath, answers);
 
-// app.post("/api/postTags", async (req, res) => {
-//   const { questionId, tag } = req.body;
-
-//   if (!questionId || !tag) {
-//     return res.status(400).json({ error: "Question ID and tag are required" });
-//   }
-
-//   try {
-//     const postTags = await readFile(postTagsFilePath);
-//     if (!postTags[questionId]) {
-//       postTags[questionId] = [];
-//     }
-
-//     const postTag = {
-//       tagId: req.tags.tagId,
-//       questionId: req.questions.questionId,
-//       tag,
-//     }
-//     postTags[tag].push(postTag);
-//     await writeFile(postTagsFilePath, postTags);
-
-//     res.status(201).json(postTags[questionId]);
-//   } catch (err) {
-//     res.status(500).json({ error: "Failed to save the post tag" });
-//   }
-// });
+    res.status(200).json({ message: "Answers updated successfully" });
+  } catch (err) {
+    console.error("Failed to update answers:", err);
+    res.status(500).json({ message: "Failed to update answers" });
+  }
+});
 
 
 const PORT = 5000;

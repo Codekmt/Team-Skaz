@@ -1,49 +1,49 @@
 import React, { useState } from "react";
-import "../FAQs.css";
+import "../styling/FAQs.css";
+import questions from "../backend/questions"; 
+import answers from "../backend/answers"; 
 
 export function FAQs() {
   const [activeIndex, setActiveIndex] = useState(null);
+  const [visibleCount, setVisibleCount] = useState(5); // Start by showing 5 items
+
+  const faqs = questions.map((question) => {
+    const questionAnswers = answers[question.id]; 
+    const correctAnswer = questionAnswers?.find((answer) => answer.correctAnswer === true);
+
+    return correctAnswer
+      ? {
+          question: question.title,
+          answer: correctAnswer.answer,
+        }
+      : null;
+  }).filter((faq) => faq !== null); // Filter out null values
 
   const toggleFAQ = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const faqs = [
-    {
-      question: "How can I schedule a meeting in Teams?",
-      answer: "To schedule a meeting in Teams, go to the Calendar tab, click on 'New meeting', fill in the details, and send the invite.",
-    },
-    {
-      question: "How do I share my screen during a Teams meeting?",
-      answer: "During a Teams meeting, click on the 'Share' button in the meeting controls, and select the screen or window you want to share.",
-    },
-    {
-      question: "How can I collaborate on documents in Teams?",
-      answer: "You can collaborate on documents by uploading them to a Teams channel or chat. Team members can then edit the documents in real-time.",
-    },
-    {
-      question: "How do I manage notifications in Teams?",
-      answer: "To manage notifications, go to your profile picture, select 'Settings', and then 'Notifications'. From there, you can customize your notification preferences.",
-    },
-    {
-      question: "How can I integrate other apps with Teams?",
-      answer: "You can integrate other apps with Teams by going to the Apps tab, searching for the app you want to integrate, and following the installation instructions.",
-    },
-  ];
+  // Handle "Show More" button click
+  const showMore = () => {
+    setVisibleCount(visibleCount + 5); // Show 5 more items
+  };
 
   return (
     <div className="faqs">
       <h2>Frequently Asked Questions</h2>
-      {faqs.map((faq, index) => (
+      {faqs.slice(0, visibleCount).map((faq, index) => (
         <div
           key={index}
           className={`faq-item ${activeIndex === index ? "active" : ""}`}
           onClick={() => toggleFAQ(index)}
         >
           <h3>{faq.question}</h3>
-          <p>{faq.answer}</p>
+          {activeIndex === index && <p>{faq.answer}</p>}
         </div>
       ))}
+      {visibleCount < faqs.length && (
+        <button className="button" onClick={showMore}>Show More</button>
+      )}
     </div>
   );
 }
