@@ -1,0 +1,59 @@
+### Step-by-Step Guide to Run `stanza_api.py`
+
+#### 1. Check if Python is Installed
+Ensure that Python 3.8 or later is installed on your system. You can check this by entering the following command in your terminal or command prompt:
+
+```bash
+python --version
+```
+
+If Python is not installed, download and install it from the [official Python website](https://www.python.org/downloads/).
+
+---
+
+#### 2. Install Required Packages
+
+Install the necessary Python packages using pip. Run the following command:
+
+```bash
+pip install flask flask-cors stanza
+```
+
+---
+
+#### 3. Configure Stanza Models
+Stanza requires downloading the necessary language models before use. Add this to your script or run it separately in a Python shell:
+
+```python
+import stanza
+stanza.download('en')  # Download English model
+```
+
+---
+
+#### 4. Verify Installation
+You can run a quick test to check if everything is installed correctly. Start a Python shell and enter:
+
+```python
+import flask
+import flask_cors
+import stanza
+print("All packages are installed correctly!")
+```
+
+---
+
+#### 5. Run the `stanza_api.py` Script
+Start the script with the following command:
+
+```bash
+python stanza_api.py
+```
+Open index.html and run in live server
+
+The script should now be running and making your API available at the specified port (http://127.0.0.1:5500/HuggingFace/index.html)
+---
+
+
+Contact the team if you require further assistance!
+
