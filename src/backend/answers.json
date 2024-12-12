@@ -4,13 +4,13 @@
       "id": "1701229200000",
       "answer": "ArcelorMittal has implemented strict safety protocols, including regular training sessions and personal protective equipment for all workers.",
       "date": "30/06/2024 11:00",
-      "correctAnswer": true
+      "correctAnswer": false
     },
     {
       "id": "1701232800000",
       "answer": "Emergency drills and hazard assessments are conducted frequently to ensure a safe working environment.",
       "date": "30/06/2024 12:00",
-      "correctAnswer": false
+      "correctAnswer": true
     }
   ],
   "1700457600000": [
@@ -122,13 +122,13 @@
       "id": "1708016400000",
       "answer": "ArcelorMittal holds approximately 6% of the global steel market share.",
       "date": "01/10/2024 10:00",
-      "correctAnswer": false
+      "correctAnswer": true
     },
     {
       "id": "1708020000000",
       "answer": "It is the largest steel producer in the world by volume.",
       "date": "01/10/2024 11:00",
-      "correctAnswer": true
+      "correctAnswer": false
     }
   ],
   "1702944000000": [

@@ -1,60 +1,102 @@
-# Overview of the React with Fluent UI template
+# ForgeFlow
 
-This app showcases how to craft a visually appealing web page that can be embedded in Microsoft Teams, Outlook and the Microsoft 365 app with React and Fluent UI. The app also enhances the end-user experiences with built-in single sign-on and data from Microsoft Graph.
+Welcome to the **ForgeFlow**! This project is designed to provide a simple yet powerful platform where users can post questions, add accurate answers to frequently asked questions (FAQ), and browse posts efficiently using tags.
 
-This app has adopted [On-Behalf-Of flow](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow) to implement SSO, and uses Azure Functions as middle-tier service, and make authenticated requests to call Graph from Azure Functions.
+## Features
 
-## Get started with the React with Fluent UI template
+### 1. **Post Questions and Answers**
+- Users can easily post their questions.
+- Answers can be added, making the forum a dynamic FAQ for the community.
 
-> **Prerequisites**
->
-> To run the command bot template in your local dev machine, you will need:
->
-> - [Node.js](https://nodejs.org/), supported versions: 18, 20
-> - A [Microsoft 365 account for development](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts)
-> - [Set up your dev environment for extending Teams apps across Microsoft 365](https://aka.ms/teamsfx-m365-apps-prerequisites)
->   Please note that after you enrolled your developer tenant in Office 365 Target Release, it may take couple days for the enrollment to take effect.
-> - [Teams Toolkit Visual Studio Code Extension](https://aka.ms/teams-toolkit) version 5.0.0 and higher or [Teams Toolkit CLI](https://aka.ms/teamsfx-toolkit-cli)
+### 2. **FAQ Management**
+- Pin frequently asked questions with their respective answers to a dedicated FAQ section.
+- Simplified FAQ browsing for quick access to the most important information.
 
-1. First, select the Teams Toolkit icon on the left in the VS Code toolbar.
-2. In the Account section, sign in with your [Microsoft 365 account](https://docs.microsoft.com/microsoftteams/platform/toolkit/accounts) if you haven't already.
-3. Press F5 to start debugging which launches your app in Teams using a web browser. Select `Debug in Teams (Edge)` or `Debug in Teams (Chrome)`.
-4. When Teams launches in the browser, select the Add button in the dialog to install your app to Teams.
+### 3. **Tag-Based Filtering**
+- Categorize posts using tags for better organization.
+- Search and filter posts based on tags for an intuitive and efficient user experience.
 
-**Congratulations**! You are running an application that can now show a beautiful web page in Teams, Outlook and the Microsoft 365 app.
+## Getting Started
 
-![Personal tab demo](https://github.com/OfficeDev/TeamsFx/assets/63089166/9599b53c-8f89-493f-9f7e-9edae1f9be54)
+Follow these steps to set up the project locally.
 
-## What's included in the template
+### Prerequisites
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-| Folder       | Contents                                                                                                               |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| `.vscode`    | VSCode files for debugging                                                                                             |
-| `appPackage` | Templates for the Teams application manifest                                                                           |
-| `env`        | Environment files                                                                                                      |
-| `infra`      | Templates for provisioning Azure resources                                                                             |
-| `src`        | The source code for the frontend of the Tab application. Implemented with Fluent UI Framework.                         |
-| `api`        | The source code for the backend of the Tab application. Implemented single-sign-on with OBO flow using Azure Functions. |
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com:Codekmt/Team-Skaz.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd forum-faq-tagging
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+   or
+   ```bash
+   yarn install
+   ```
 
-The following are Teams Toolkit specific project files. You can [visit a complete guide on Github](https://github.com/OfficeDev/TeamsFx/wiki/Teams-Toolkit-Visual-Studio-Code-v5-Guide#overview) to understand how Teams Toolkit works.
+### Run the Development Server
+Start the local development server:
+```bash
+npm run dev:teamsfx
+```
+or
+```bash
+yarn dev:teamsfx
+```
+### Run the Backend Server
+Navigate to src/backend
+```node server
 
-| File                 | Contents                                                                                                                                                                                                                                                |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `teamsapp.yml`       | This is the main Teams Toolkit project file. The project file defines two primary things: Properties and configuration Stage definitions.                                                                                                               |
-| `teamsapp.local.yml` | This overrides `teamsapp.yml` with actions that enable local execution and debugging.                                                                                                                                                                   |
-| `aad.manifest.json`  | This file defines the configuration of Microsoft Entra app. This template will only provision [single tenant](https://learn.microsoft.com/azure/active-directory/develop/single-and-multi-tenant-apps#who-can-sign-in-to-your-app) Microsoft Entra app. |
+Visit [http://localhost:53000](http://localhost:53000) in your browser to view the application.
 
-## Extend the React with Fluent UI template
+## Usage
 
-Following documentation will help you to extend the React with Fluent UI template.
+1. **Adding Questions and Answers**
+   - Navigate to the "Post a Question" section to submit a new question.
+   - Provide an answer if your question is suitable for the FAQ.
 
-- [Add or manage the environment](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-multi-env)
-- [Create multi-capability app](https://learn.microsoft.com/microsoftteams/platform/toolkit/add-capability)
-- [Use an existing Microsoft Entra application](https://learn.microsoft.com/microsoftteams/platform/toolkit/use-existing-aad-app)
-- [Customize the Teams app manifest](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-preview-and-customize-app-manifest)
-- Host your app in Azure by [provision cloud resources](https://learn.microsoft.com/microsoftteams/platform/toolkit/provision) and [deploy the code to cloud](https://learn.microsoft.com/microsoftteams/platform/toolkit/deploy)
-- [Collaborate on app development](https://learn.microsoft.com/microsoftteams/platform/toolkit/teamsfx-collaboration)
-- [Set up the CI/CD pipeline](https://learn.microsoft.com/microsoftteams/platform/toolkit/use-cicd-template)
-- [Publish the app to your organization or the Microsoft Teams app store](https://learn.microsoft.com/microsoftteams/platform/toolkit/publish)
-- [Enable the app for multi-tenant](https://github.com/OfficeDev/TeamsFx/wiki/Multi-tenancy-Support-for-Azure-AD-app)
-- [Preview the app on mobile clients](https://aka.ms/teamsfx-mobile)
+2. **Filtering by Tags**
+   - Use the search bar or tag cloud to filter posts based on specific topics.
+   - Combine multiple tags for precise results.
+
+3. **Managing the FAQ**
+   - Admins or moderators can pin questions to the FAQ section for better visibility.
+   - FAQs are automatically updated when new answers are added.
+
+## Technologies Used
+
+- **Frontend**: React
+- **Backend**: Node.js, Express
+- **Database**: Supabase
+- **Styling**: CSS
+
+## Contributing
+
+Contributions are welcome! Feel free to submit issues or pull requests.
+
+1. Fork the repository.
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/YourFeature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add YourFeature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/YourFeature
+   ```
+5. Open a pull request.
+
+
+---
+Thank you for using **ForgeFlow**! 🎉

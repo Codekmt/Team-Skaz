@@ -6,8 +6,11 @@ const HomePage = () => {
     return (
       <div className="welcome page">
         <div className="narrow page-padding">
+          <main>
           <section class="welcome-section">
-            <h1>Welcome to Our Help Center</h1>
+            <h1>Welcome to ForgeFlow</h1>
+            <p style={{textAlign:"center", fontFamily: "Courier New"}}>A smooth flow of ideas being forged together.</p>
+            <hr />
             <p>
               Have a question or need assistance? You’re in the right place! This FAQ page is designed to provide quick and helpful answers to the most common questions across a variety of topics, from IT troubleshooting to HR policies.
             </p>
@@ -24,6 +27,7 @@ const HomePage = () => {
               <em>Start exploring now or use the search bar to find specific topics!</em>
             </p>
           </section>
+          </main>
         </div>
       </div>
     );

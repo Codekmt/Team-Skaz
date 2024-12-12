@@ -14,12 +14,12 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "firstTry${{APP_NAME_SUFFIX}}",
-        "full": "Full name for firstTry"
+        "short": "ForgeFlow${{APP_NAME_SUFFIX}}",
+        "full": "Full name for ForgeFlow"
     },
     "description": {
-        "short": "Short description of firstTry",
-        "full": "Full description of firstTry"
+        "short": "Short description of ForgeFlow",
+        "full": "Full description of ForgeFlow"
     },
     "accentColor": "#FFFFFF",
     "bots": [],

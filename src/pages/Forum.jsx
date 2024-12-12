@@ -11,6 +11,7 @@ const Forum = () => {
   const [filterTag, setFilterTag] = useState("");
   const [availableTags, setAvailableTags] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [isDropdownActive, setIsDropdownActive] = useState(false); // New state
 
   const fetchQuestions = async () => {
     const response = await axios.get("http://localhost:5000/api/questions");
@@ -48,25 +49,29 @@ const Forum = () => {
                 placeholder="Filter by tags"
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
+                onFocus={() => setIsDropdownActive(true)} // Activate dropdown on focus
+                onBlur={() => setTimeout(() => setIsDropdownActive(false), 100)} // Deactivate after click
                 className="tag-search-input"
               />
-              <div className="tag-dropdown">
-                {filteredTags.map((tag) => (
-                  <div
-                    key={tag}
-                    className="tag-option"
-                    onClick={() => {
-                      setFilterTag(tag);
-                      setSearchInput(""); 
-                    }}
-                  >
-                    {tag}
-                  </div>
-                ))}
-              </div>
+              {isDropdownActive && ( // Display dropdown only when active
+                <div className="tag-dropdown">
+                  {filteredTags.map((tag) => (
+                    <div
+                      key={tag}
+                      className="tag-option"
+                      onClick={() => {
+                        setFilterTag(tag);
+                        setSearchInput("");
+                      }}
+                    >
+                      {tag}
+                    </div>
+                  ))}
+                </div>
+              )}
             </>
           )}
-          
+
           {filterTag && (
             <div className="selected-tag">
               <span>Filtering by: {filterTag}</span>

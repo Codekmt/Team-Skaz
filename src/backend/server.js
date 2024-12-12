@@ -78,7 +78,7 @@ app.post("/api/questions", async (req, res) => {
       date: formatDate(new Date().toISOString()),
     };
 
-    questions.push(newQuestion);
+    questions.unshift(newQuestion);
     await writeFile(questionsFilePath, questions);
 
     res.status(201).json(newQuestion);
@@ -119,7 +119,7 @@ app.post("/api/answers", async (req, res) => {
       correctAnswer: false,
     };
 
-    answers[questionId].push(newAnswer);
+    answers[questionId].unshift(newAnswer);
     await writeFile(answersFilePath, answers);
 
     res.status(201).json(newAnswer);
