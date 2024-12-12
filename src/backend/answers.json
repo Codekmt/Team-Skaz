@@ -46,13 +46,13 @@
       "id": "1692925200000",
       "answer": "ArcelorMittal provides scholarships and further education opportunities for career growth.",
       "date": "20/03/2024 11:00",
-      "correctAnswer": false
+      "correctAnswer": true
     },
     {
       "id": "1692928800000",
       "answer": "Employees can attend technical training programs to enhance their expertise.",
       "date": "20/03/2024 12:00",
-      "correctAnswer": true
+      "correctAnswer": false
     },
     {
       "id": "1733677774602",
