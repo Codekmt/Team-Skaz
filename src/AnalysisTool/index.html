@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stanza NL Text Analysis</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>Stanza NL Text Analysis</h1>
+    <p>Enter text to fetch entities</p>
+    <textarea id="inputText" oninput="adjustHeight(this)"></textarea>
+    <button class="button" id="analyzeButton">Analyse Text</button>
+
+    <div class="results" id="results"></div>
+
+    <script>
+        const button = document.getElementById("analyzeButton");
+        const inputText = document.getElementById("inputText");
+        const results = document.getElementById("results");
+
+        function adjustHeight(element) {
+            element.style.height = "auto"; 
+            element.style.height = (element.scrollHeight) + "px"; 
+          }
+        button.addEventListener("click", async () => {
+            const text = inputText.value;
+
+            if (!text) {
+                alert("Enter text.");
+                return;
+            }
+
+            try {
+
+                const response = await fetch("http://127.0.0.1:5000/analyze", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ text }),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Serverfout: " + response.status);
+                }
+
+                const data = await response.json();
+                results.innerHTML = "";
+
+
+                const uniqueEntities = new Set();
+
+
+                if (data.entities && data.entities.length > 0) {
+                    data.entities.forEach((entity) => {
+
+                        uniqueEntities.add(entity.text);
+                    });
+
+
+                    uniqueEntities.forEach((entityText) => {
+                        const div = document.createElement("div");
+                        div.className = "entity";
+                        div.textContent = `Text: ${entityText}`;
+                        results.appendChild(div);
+                    });
+                } else {
+                    results.innerHTML = "<p>No entities found.</p>";
+                }
+            } catch (error) {
+                results.innerHTML = `<p>Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
