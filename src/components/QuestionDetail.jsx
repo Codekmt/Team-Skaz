@@ -45,16 +45,16 @@ const QuestionDetail = ({ question }) => {
   return (
     <section className="displayedQuestion">
       <h2 className="questionTitle">{question.title}</h2>
-      <p className="questionTime">Asked: {question.date}</p>
-      <hr />
-      <p className="questionTags">
-        {question.tags.map((tag, index) => (
-          <span key={index} className="tag">
-            {tag}
-          </span>
-        ))}
-      </p>
-      <hr />
+        <p className="questionTime">Asked by User{question.id.substring(6, 9)} at {question.date}</p>
+          <hr />
+            <div className="questionTags">
+              {question.tags.map((tag, index) => (
+                <span key={index} className="tag">
+              {tag}
+                </span>
+               ))}
+            </div>
+          <hr />
       <AnswerList
         answers={answers}
         correctAnswerID={correctAnswerID}

@@ -2,7 +2,6 @@ import React from "react";
 
 const AnswerList = ({ answers, correctAnswerID, onCorrectAnswer }) => {
   const handleSelectCorrectAnswer = (selectedID) => {
-    // Only call onCorrectAnswer function from the parent component
     onCorrectAnswer(selectedID); 
   };
 
@@ -19,6 +18,9 @@ const AnswerList = ({ answers, correctAnswerID, onCorrectAnswer }) => {
             checked={correctAnswerID === a.id}
             onChange={() => handleSelectCorrectAnswer(a.id)} // Trigger parent handler
           />
+          <br />
+          <div className="answerId">User{a.id.substring(6, 9)} at {a.date}
+          </div>
           <hr />
         </li>
       ))}
