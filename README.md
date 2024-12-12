@@ -99,4 +99,4 @@ Contributions are welcome! Feel free to submit issues or pull requests.
 
 
 ---
-Thank you for using the **ForgeFlow**! 🎉
+Thank you for using **ForgeFlow**! 🎉
