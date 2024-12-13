@@ -14,7 +14,7 @@
         "outline": "outline.png"
     },
     "name": {
-        "short": "used-case${{APP_NAME_SUFFIX}}",
+        "short": "ForgeFlow!${{APP_NAME_SUFFIX}}",
         "full": "Full name for used-case"
     },
     "description": {
